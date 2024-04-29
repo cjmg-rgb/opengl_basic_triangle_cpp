@@ -3,6 +3,7 @@
 #include "iostream"
 #include "vector"
 #include "string"
+#include "fstream"
 
 #include "glew.h"
 #include "glfw3.h"
@@ -16,61 +17,25 @@
 #include "gtc/matrix_transform.hpp"
 #include "gtc/type_ptr.hpp"
 
-
-struct Vertex
+float vertices[] =
 {
-	glm::vec3 pos;
+   -.9f, .5f, .0f, 1.f, 0.f, 0.f, 0.f, 1.f, // UP-LEFT
+   -.9f,-.5f, .0f, 0.f, 0.f, 1.f, 0.f, 0.f, // BOT-LEFT
+   -.1f,-.5f, .0f, 1.f, 0.f, 0.f, 1.f, 0.f, // BOT-RIGHT
+   -.1f, .5f, .0f, 0.f, 0.f, 1.f, 1.f, 1.f // UP-RIGHT
 };
 
-float triangle1[] =
+float vertices2[] =
 {
-	-.5f, .5f, .0f,
-	-.8f, -.5f, .0f,
-	-.2f, -.5f, .0f
+   .9f, .5f, .0f, 1.f, 0.f, 1.f, 1.f, 1.f, // UP-LEFT
+   .9f,-.5f, .0f, 0.f, 0.f, 1.f, 1.f, 0.f, // BOT-LEFT
+   .1f,-.5f, .0f, 1.f, 0.f, 1.f, 0.f, 0.f, // BOT-RIGHT
+   .1f, .5f, .0f, 0.f, 0.f, 0.f, 0.f, 1.f // UP-RIGHT
 };
 
-float triangle2[] =
+int indices[] =
 {
-	.5f, .5f, .0f,
-	.8f, -.5f, .0f,
-	.2f, -.5f, .0f
+	0, 1, 2,
+	0, 2, 3
 };
-
-const char* for_vertex_shader = R"glsl(
-	#version 440
-
-	layout (location = 0) in vec3 vertex_position;
-
-	void main()
-	{
-
-		gl_Position = vec4(vertex_position, 1.0f);
-	}
-
-)glsl";	
-
-const char* for_fragment_shader1 = R"glsl(
-	#version 440
-
-	out vec4 fs_color;
-
-	void main()
-	{
-		fs_color = vec4(.5, .5, .5, 1.0);
-	
-	}
-
-)glsl";
-
-const char* for_fragment_shader2 = R"glsl(
-	#version 440
-
-	out vec4 fs_color;
-
-	void main()
-	{
-		fs_color = vec4(1.0, 1.0, 0, 1.0);
-	
-	}
-
-)glsl";
+int sizeOfIndices = sizeof(indices) / sizeof(int);
