@@ -136,7 +136,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="libs.h" />
+    <ClInclude Include="config.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fragment2_core.glsl" />
