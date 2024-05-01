@@ -17,12 +17,21 @@
 #include "gtc/matrix_transform.hpp"
 #include "gtc/type_ptr.hpp"
 
-float vertices[] =
+
+struct Vertex
 {
-   -.5f, .5f, .0f, 1.f, 0.f, 0.f, 0.f, 1.f, // TOP-LEFT
-   -.5f,-.5f, .0f, .0f, 1.f, 0.f, 0.f, 0.f, // BOT-LEFT
-	.5f,-.5f, .0f, .0f, 0.f, 1.f, 1.f, 0.f, // BOT-RIGHT
-	.5f, .5f, .0f, .3f, .7f, .9f, 1.f, 1.f  // TOP-RIGHT
+	glm::vec3 pos;
+	glm::vec3 col;
+	glm::vec2 texcoord;
+	glm::vec3 normal;
+};
+
+Vertex vertices[] =
+{
+	glm::vec3(-.5f, .5f, .0f), glm::vec3(1.f, .0f, .0f), glm::vec2(0.f, 1.f), glm::vec3(0.f, 0.f, -1.f),
+	glm::vec3(-.5f,-.5f, .0f), glm::vec3(0.f, 1.f, .0f), glm::vec2(0.f, 0.f), glm::vec3(0.f, 0.f, -1.f),
+	glm::vec3(.5f,-.5f, .0f), glm::vec3(0.f, 0.f, 1.f), glm::vec2(1.f, 0.f), glm::vec3(0.f, 0.f, -1.f),
+	glm::vec3(.5f, .5f, .0f), glm::vec3(0.f, 1.f, 0.f), glm::vec2(1.f, 1.f), glm::vec3(0.f, 0.f, -1.f),
 };
 
 unsigned int indices[] =
